@@ -82,6 +82,19 @@
             content: '⭐';
         }
 
+        /* Adicionando mais kpop-decoration para corresponder ao HTML */
+        .kpop-decoration:nth-child(4) {
+            top: 80px;
+            left: 50px;
+            content: '🐰';
+        }
+
+        .kpop-decoration:nth-child(5) {
+            bottom: 10px;
+            right: 150px;
+            content: '💜';
+        }
+
         .section {
             margin-bottom: 35px;
             padding: 25px;
@@ -197,6 +210,45 @@
             margin-bottom: 10px;
         }
 
+        /* Estilos para os botões */
+        .button-group {
+            text-align: center;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            background-color: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .button-group button:hover {
+            background-color: #5a6cdb;
+            transform: translateY(-2px);
+        }
+
+        .button-group button:active {
+            transform: translateY(0);
+        }
+
+        .button-group button.secondary {
+            background-color: #4ecdc4;
+        }
+
+        .button-group button.secondary:hover {
+            background-color: #43b3ac;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -220,135 +272,211 @@
         <div class="kpop-decoration">🐰</div>
         <div class="kpop-decoration">💜</div>
         
-        <div class="header">
-            <h1>BRIEFING PRA AJUDAR A MARI</h1>
-        </div>
-
-        <div class="section info">
-            <h2>📋 INFORMAÇÕES BÁSICAS 🌸</h2>
-            <div class="two-column">
-                <div class="input-group">
-                    <label for="cliente">Cliente:</label>
-                    <input type="text" id="cliente" name="cliente">
-                </div>
-                <div class="input-group">
-                    <label for="projeto">Projeto:</label>
-                    <input type="text" id="projeto" name="projeto">
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🎯 SOBRE O PROJETO 💖</h2>
-            <div class="input-group">
-                <label for="objetivo">1. Qual o objetivo principal? <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
-                <textarea id="objetivo" name="objetivo" placeholder="Ex: Lançar produto, divulgar evento, fortalecer marca..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="mensagem">2. Mensagem principal: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
-                <textarea id="mensagem" name="mensagem" placeholder="O que precisa ser comunicado?"></textarea>
-            </div>
-        </div>
-
-        <div class="section visual">
-            <h2>🎨 DIREÇÃO VISUAL 🐰</h2>
-            <div class="input-group">
-                <label>3. Tom de voz/Personalidade: <span style="color: #e53e3e; font-size: 0.8em;">*obrigatório</span></label>
-                <div class="checkbox-group">
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="serio" name="tom" value="serio">
-                        <label for="serio">Sério/Institucional</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="descontraido" name="tom" value="descontraido">
-                        <label for="descontraido">Descontraído/Jovem</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="elegante" name="tom" value="elegante">
-                        <label for="elegante">Elegante/Sofisticado</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="moderno" name="tom" value="moderno">
-                        <label for="moderno">Moderno/Inovador</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="tradicional" name="tom" value="tradicional">
-                        <label for="tradicional">Tradicional/Clássico</label>
-                    </div>
-                </div>
+        <form name="briefing-da-mari" method="POST" data-netlify="true">
+            <div class="header">
+                <h1>BRIEFING PRA AJUDAR A MARI</h1>
             </div>
 
-            <div class="input-group">
-                <label>4. Cores: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+            <div class="section info">
+                <h2>📋 INFORMAÇÕES BÁSICAS 🌸</h2>
                 <div class="two-column">
-                    <div>
-                        <label for="cores-usar">Cores que devem ser usadas: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
-                        <input type="text" id="cores-usar" name="cores-usar">
+                    <div class="input-group">
+                        <label for="cliente">Cliente:</label>
+                        <input type="text" id="cliente" name="cliente">
                     </div>
-                    <div>
-                        <label for="cores-evitar">Cores que devem ser evitadas: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
-                        <input type="text" id="cores-evitar" name="cores-evitar">
+                    <div class="input-group">
+                        <label for="projeto">Projeto:</label>
+                        <input type="text" id="projeto" name="projeto">
                     </div>
                 </div>
-                <div style="margin-top: 15px;">
-                    <label>Já existe identidade visual? <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+            </div>
+
+            <div class="section">
+                <h2>🎯 SOBRE O PROJETO 💖</h2>
+                <div class="input-group">
+                    <label for="objetivo">1. Qual o objetivo principal? <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                    <textarea id="objetivo" name="objetivo" placeholder="Ex: Lançar produto, divulgar evento, fortalecer marca..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="mensagem">2. Mensagem principal: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                    <textarea id="mensagem" name="mensagem" placeholder="O que precisa ser comunicado?"></textarea>
+                </div>
+            </div>
+
+            <div class="section visual">
+                <h2>🎨 DIREÇÃO VISUAL 🐰</h2>
+                <div class="input-group">
+                    <label>3. Tom de voz/Personalidade: <span style="color: #e53e3e; font-size: 0.8em;">*obrigatório</span></label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="id-sim" name="identidade" value="sim">
-                            <label for="id-sim">Sim</label>
+                            <input type="checkbox" id="serio" name="tom[]" value="serio">
+                            <label for="serio">Sério/Institucional</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="id-nao" name="identidade" value="nao">
-                            <label for="id-nao">Não</label>
+                            <input type="checkbox" id="descontraido" name="tom[]" value="descontraido">
+                            <label for="descontraido">Descontraído/Jovem</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="elegante" name="tom[]" value="elegante">
+                            <label for="elegante">Elegante/Sofisticado</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="moderno" name="tom[]" value="moderno">
+                            <label for="moderno">Moderno/Inovador</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="tradicional" name="tom[]" value="tradicional">
+                            <label for="tradicional">Tradicional/Clássico</label>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="input-group">
-                <label>5. Estilo visual: <span style="color: #e53e3e; font-size: 0.8em;">*obrigatório</span></label>
-                <div class="checkbox-group">
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="minimalista" name="estilo" value="minimalista">
-                        <label for="minimalista">Minimalista</label>
+                <div class="input-group">
+                    <label>4. Cores: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                    <div class="two-column">
+                        <div>
+                            <label for="cores-usar">Cores que devem ser usadas: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                            <input type="text" id="cores-usar" name="cores-usar">
+                        </div>
+                        <div>
+                            <label for="cores-evitar">Cores que devem ser evitadas: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                            <input type="text" id="cores-evitar" name="cores-evitar">
+                        </div>
                     </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="colorido" name="estilo" value="colorido">
-                        <label for="colorido">Colorido/Vibrante</label>
+                    <div style="margin-top: 15px;">
+                        <label>Já existe identidade visual? <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="id-sim" name="identidade[]" value="sim">
+                                <label for="id-sim">Sim</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="id-nao" name="identidade[]" value="nao">
+                                <label for="id-nao">Não</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="clean" name="estilo" value="clean">
-                        <label for="clean">Clean/Corporativo</label>
+                </div>
+
+                <div class="input-group">
+                    <label>5. Estilo visual: <span style="color: #e53e3e; font-size: 0.8em;">*obrigatório</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="minimalista" name="estilo[]" value="minimalista">
+                            <label for="minimalista">Minimalista</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="colorido" name="estilo[]" value="colorido">
+                            <label for="colorido">Colorido/Vibrante</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="clean" name="estilo[]" value="clean">
+                            <label for="clean">Clean/Corporativo</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="artistico" name="estilo[]" value="artistico">
+                            <label for="artistico">Artístico/Criativo</label>
+                        </div>
                     </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="artistico" name="estilo" value="artistico">
-                        <label for="artistico">Artístico/Criativo</label>
-                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="prazo">6. Prazo de entrega: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                    <input type="text" id="prazo" name="prazo">
                 </div>
             </div>
 
-            <div class="input-group">
-                <label for="prazo">6. Prazo de entrega: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
-                <input type="text" id="prazo" name="prazo">
+            <div class="section refs">
+                <h2>💡 REFERÊNCIAS ⭐</h2>
+                <div class="input-group">
+                    <label for="gosta">7. Exemplos que gosta: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                    <textarea id="gosta" name="gosta" placeholder="Links, imagens ou descrição"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="nao-gosta">8. Exemplos que NÃO gosta: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                    <textarea id="nao-gosta" name="nao-gosta" placeholder="O que deve ser evitado?"></textarea>
+                </div>
             </div>
-        </div>
 
-        <div class="section refs">
-            <h2>💡 REFERÊNCIAS ⭐</h2>
-            <div class="input-group">
-                <label for="gosta">7. Exemplos que gosta: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
-                <textarea id="gosta" name="gosta" placeholder="Links, imagens ou descrição"></textarea>
+            <div class="notes">
+                <h3>📝 OBSERVAÇÕES ADICIONAIS 💜</h3>
+                <textarea id="observacoes" name="observacoes" placeholder="Qualquer informação extra importante" style="border: none; background: transparent; min-height: 80px;"></textarea>
             </div>
-            <div class="input-group">
-                <label for="nao-gosta">8. Exemplos que NÃO gosta: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
-                <textarea id="nao-gosta" name="nao-gosta" placeholder="O que deve ser evitado?"></textarea>
-            </div>
-        </div>
 
-        <div class="notes">
-            <h3>📝 OBSERVAÇÕES ADICIONAIS 💜</h3>
-            <textarea placeholder="Qualquer informação extra importante" style="border: none; background: transparent; min-height: 80px;"></textarea>
-        </div>
+            <div class="button-group">
+                <button type="submit">Salvar e Enviar Briefing</button>
+                <button id="exportButton" class="secondary">Exportar para TXT (Cópia)</button>
+            </div>
+        </form>
+
     </div>
+
+    <script>
+        // Função para exportar os dados para um arquivo de texto (opcional, para cópia local)
+        function exportBriefingToTxt() {
+            let briefingText = "--- Briefing Visual ---\n\n";
+
+            const data = {};
+
+            // Coletar campos de texto e textarea
+            document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+                data[input.name] = input.value; // Usar 'name' aqui para consistência com o backend
+            });
+
+            // Coletar checkboxes (para grupos)
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                const groupName = checkbox.name; // ex: "tom[]"
+                const baseName = groupName.replace('[]', ''); // ex: "tom"
+
+                if (!data[baseName]) {
+                    data[baseName] = [];
+                }
+                if (checkbox.checked) {
+                    data[baseName].push(checkbox.value);
+                }
+            });
+
+            // Formatar para texto
+            briefingText += "INFORMAÇÕES BÁSICAS:\n";
+            briefingText += `Cliente: ${data.cliente || ''}\n`;
+            briefingText += `Projeto: ${data.projeto || ''}\n\n`;
+
+            briefingText += "SOBRE O PROJETO:\n";
+            briefingText += `Objetivo Principal: ${data.objetivo || ''}\n`;
+            briefingText += `Mensagem Principal: ${data.mensagem || ''}\n\n`;
+
+            briefingText += "DIREÇÃO VISUAL:\n";
+            briefingText += `Tom de voz/Personalidade: ${(data.tom || []).join(', ') || ''}\n`;
+            briefingText += `Cores a usar: ${data['cores-usar'] || ''}\n`;
+            briefingText += `Cores a evitar: ${data['cores-evitar'] || ''}\n`;
+            briefingText += `Já existe identidade visual? ${data.identidade && data.identidade.length > 0 ? (data.identidade[0] === 'sim' ? 'Sim' : 'Não') : ''}\n`;
+            briefingText += `Estilo visual: ${(data.estilo || []).join(', ') || ''}\n`;
+            briefingText += `Prazo de entrega: ${data.prazo || ''}\n\n`;
+
+            briefingText += "REFERÊNCIAS:\n";
+            briefingText += `Exemplos que gosta: ${data.gosta || ''}\n`;
+            briefingText += `Exemplos que NÃO gosta: ${data['nao-gosta'] || ''}\n\n`;
+
+            briefingText += "OBSERVAÇÕES ADICIONAIS:\n";
+            briefingText += `${data.observacoes || ''}\n`;
+
+
+            // Criar um blob de texto e um link para download
+            const blob = new Blob([briefingText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'briefing-visual.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Adicionar event listener ao botão de exportar
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('exportButton').addEventListener('click', exportBriefingToTxt);
+        });
+    </script>
 </body>
 </html>
