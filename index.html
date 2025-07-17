@@ -82,7 +82,6 @@
             content: '⭐';
         }
 
-        /* Adicionando mais kpop-decoration para corresponder ao HTML */
         .kpop-decoration:nth-child(4) {
             top: 80px;
             left: 50px;
@@ -210,7 +209,6 @@
             margin-bottom: 10px;
         }
 
-        /* Estilos para os botões */
         .button-group {
             text-align: center;
             margin-top: 40px;
@@ -272,7 +270,7 @@
         <div class="kpop-decoration">🐰</div>
         <div class="kpop-decoration">💜</div>
         
-       <form name="briefing-da-mari" method="POST" data-netlify="true" action="/success.html">
+        <form name="briefing-da-mari" method="POST" netlify action="/success.html">
             <div class="header">
                 <h1>BRIEFING PRA AJUDAR A MARI</h1>
             </div>
@@ -412,21 +410,20 @@
     </div>
 
     <script>
-        // Função para exportar os dados para um arquivo de texto (opcional, para cópia local)
         function exportBriefingToTxt() {
             let briefingText = "--- Briefing Visual ---\n\n";
 
             const data = {};
 
-            // Coletar campos de texto e textarea
-            document.querySelectorAll('input[type="text"], textarea').forEach(input => {
-                data[input.name] = input.value; // Usar 'name' aqui para consistência com o backend
+            // Coletar campos de texto e textarea apenas do formulário de briefing
+            document.querySelectorAll('form[name="briefing-da-mari"] input[type="text"], form[name="briefing-da-mari"] textarea').forEach(input => {
+                data[input.name] = input.value;
             });
 
-            // Coletar checkboxes (para grupos)
-            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                const groupName = checkbox.name; // ex: "tom[]"
-                const baseName = groupName.replace('[]', ''); // ex: "tom"
+            // Coletar checkboxes (para grupos) apenas do formulário de briefing
+            document.querySelectorAll('form[name="briefing-da-mari"] input[type="checkbox"]').forEach(checkbox => {
+                const groupName = checkbox.name; 
+                const baseName = groupName.replace('[]', ''); 
 
                 if (!data[baseName]) {
                     data[baseName] = [];
@@ -460,8 +457,6 @@
             briefingText += "OBSERVAÇÕES ADICIONAIS:\n";
             briefingText += `${data.observacoes || ''}\n`;
 
-
-            // Criar um blob de texto e um link para download
             const blob = new Blob([briefingText], { type: 'text/plain;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -473,7 +468,6 @@
             URL.revokeObjectURL(url);
         }
 
-        // Adicionar event listener ao botão de exportar
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('exportButton').addEventListener('click', exportBriefingToTxt);
         });
