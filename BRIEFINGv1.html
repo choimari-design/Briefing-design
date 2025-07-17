@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing Visual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header::after {
+            content: '🐰💜✨';
+            font-size: 1.5em;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .kpop-decoration {
+            position: absolute;
+            font-size: 1.2em;
+            opacity: 0.3;
+        }
+
+        .kpop-decoration:nth-child(1) {
+            top: 10px;
+            right: 20px;
+            content: '💖';
+        }
+
+        .kpop-decoration:nth-child(2) {
+            bottom: 20px;
+            left: 30px;
+            content: '🌸';
+        }
+
+        .kpop-decoration:nth-child(3) {
+            top: 50%;
+            right: 10px;
+            content: '⭐';
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f5 100%);
+            border-radius: 15px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .section h2 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section.info {
+            border-left-color: #4ecdc4;
+            background: linear-gradient(135deg, #f0fffe 0%, #f8f9ff 100%);
+        }
+
+        .section.visual {
+            border-left-color: #45b7d1;
+            background: linear-gradient(135deg, #f0f8ff 0%, #fff5f8 100%);
+        }
+
+        .section.refs {
+            border-left-color: #96ceb4;
+            background: linear-gradient(135deg, #f0fff4 0%, #f8f9ff 100%);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .checkbox-item:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .notes {
+            background: linear-gradient(135deg, #fff9e6 0%, #f0fff4 100%);
+            border-left-color: #ffeaa7;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .notes h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="kpop-decoration">💖</div>
+        <div class="kpop-decoration">🌸</div>
+        <div class="kpop-decoration">⭐</div>
+        <div class="kpop-decoration">🐰</div>
+        <div class="kpop-decoration">💜</div>
+        
+        <div class="header">
+            <h1>BRIEFING PRA AJUDAR A MARI</h1>
+        </div>
+
+        <div class="section info">
+            <h2>📋 INFORMAÇÕES BÁSICAS 🌸</h2>
+            <div class="two-column">
+                <div class="input-group">
+                    <label for="cliente">Cliente:</label>
+                    <input type="text" id="cliente" name="cliente">
+                </div>
+                <div class="input-group">
+                    <label for="projeto">Projeto:</label>
+                    <input type="text" id="projeto" name="projeto">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 SOBRE O PROJETO 💖</h2>
+            <div class="input-group">
+                <label for="objetivo">1. Qual o objetivo principal? <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                <textarea id="objetivo" name="objetivo" placeholder="Ex: Lançar produto, divulgar evento, fortalecer marca..."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="mensagem">2. Mensagem principal: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                <textarea id="mensagem" name="mensagem" placeholder="O que precisa ser comunicado?"></textarea>
+            </div>
+        </div>
+
+        <div class="section visual">
+            <h2>🎨 DIREÇÃO VISUAL 🐰</h2>
+            <div class="input-group">
+                <label>3. Tom de voz/Personalidade: <span style="color: #e53e3e; font-size: 0.8em;">*obrigatório</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="serio" name="tom" value="serio">
+                        <label for="serio">Sério/Institucional</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="descontraido" name="tom" value="descontraido">
+                        <label for="descontraido">Descontraído/Jovem</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="elegante" name="tom" value="elegante">
+                        <label for="elegante">Elegante/Sofisticado</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="moderno" name="tom" value="moderno">
+                        <label for="moderno">Moderno/Inovador</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tradicional" name="tom" value="tradicional">
+                        <label for="tradicional">Tradicional/Clássico</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>4. Cores: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                <div class="two-column">
+                    <div>
+                        <label for="cores-usar">Cores que devem ser usadas: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                        <input type="text" id="cores-usar" name="cores-usar">
+                    </div>
+                    <div>
+                        <label for="cores-evitar">Cores que devem ser evitadas: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                        <input type="text" id="cores-evitar" name="cores-evitar">
+                    </div>
+                </div>
+                <div style="margin-top: 15px;">
+                    <label>Já existe identidade visual? <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="id-sim" name="identidade" value="sim">
+                            <label for="id-sim">Sim</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="id-nao" name="identidade" value="nao">
+                            <label for="id-nao">Não</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>5. Estilo visual: <span style="color: #e53e3e; font-size: 0.8em;">*obrigatório</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="minimalista" name="estilo" value="minimalista">
+                        <label for="minimalista">Minimalista</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="colorido" name="estilo" value="colorido">
+                        <label for="colorido">Colorido/Vibrante</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="clean" name="estilo" value="clean">
+                        <label for="clean">Clean/Corporativo</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="artistico" name="estilo" value="artistico">
+                        <label for="artistico">Artístico/Criativo</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="prazo">6. Prazo de entrega: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                <input type="text" id="prazo" name="prazo">
+            </div>
+        </div>
+
+        <div class="section refs">
+            <h2>💡 REFERÊNCIAS ⭐</h2>
+            <div class="input-group">
+                <label for="gosta">7. Exemplos que gosta: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                <textarea id="gosta" name="gosta" placeholder="Links, imagens ou descrição"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="nao-gosta">8. Exemplos que NÃO gosta: <span style="color: #a0aec0; font-size: 0.8em;">(opcional)</span></label>
+                <textarea id="nao-gosta" name="nao-gosta" placeholder="O que deve ser evitado?"></textarea>
+            </div>
+        </div>
+
+        <div class="notes">
+            <h3>📝 OBSERVAÇÕES ADICIONAIS 💜</h3>
+            <textarea placeholder="Qualquer informação extra importante" style="border: none; background: transparent; min-height: 80px;"></textarea>
+        </div>
+    </div>
+</body>
+</html>
